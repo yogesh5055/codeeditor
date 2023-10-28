@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="download.png">
+</head>
+<header>
+    <h1>CODE EDITOR</h1>
+    <button class="runbutton" id="run" onclick="run()">Run</button>
+</header>
+<body>
+    <div class="codeeditor">
+        <section>
+            <h4 class="htmltext">HTML</h4>
+            <textarea id="html-area"></textarea>
+        </section>
+        <section>
+            <h4 class="csstext">CSS</h4>
+            <textarea id="css-area"></textarea>
+        </section>
+        <section>
+            <h4 class="jstext">JAVA SCRIPT</h4>
+            <textarea id="js-area"></textarea>
+        </section>
+     </div>
+     <div class="outputeditor">
+        <iframe id="output-frame" width="1200" height="250"></iframe>
+     </div>
+     <script type="text/javascript">
+        function run(){
+        let htmlCode=document.querySelector(".codeeditor #html-area").value;
+        let cssCode="<style>"+document.querySelector(".codeeditor #css-area").value+"</style>";
+        let scriptCode=document.querySelector(".codeeditor #js-area").value;
+        let output=document.querySelector(".outputeditor #output-frame");
+        output.contentDocument.body.innerHTML=htmlCode+cssCode;
+        output.contentWindow.eval(scriptCode);
+        }
+     document.querySelector(".codeeditor #html-area").addEventListener("keyup",run);
+     document.querySelector(".codeeditor #css-area").addEventListener("keyup",run);
+     document.querySelector(".codeeditor #js-area").addEventListener("keyup",run);
+     </script>
+
+    
+</body>
+</html>
